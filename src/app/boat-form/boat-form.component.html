@@ -1,0 +1,80 @@
+<br />
+<div class="col">
+  <h2>Add Row Boat</h2>
+  <div class="container">
+    <form [formGroup]="newForm" (submit)="onFormSubmit()">
+      <div class="form-group">
+        <label>Number Of Seats*</label>
+        <input
+          placeholder="Number Of Seats"
+          class="form-control"
+          type="text"
+          formControlName="numberOfSeats"
+        />
+      </div>
+      <div class="form-group">
+        <label>Boat Number*</label>
+        <input
+          placeholder="Boat Number"
+          class="form-control"
+          type="text"
+          formControlName="boatNumber"
+        />
+        <br />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="newForm?.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<br />
+<div class="col">
+  <h2>Add Electrical Boat</h2>
+  <div class="container">
+    <form [formGroup]="newForm1" (submit)="onFormSubmit1()">
+      <div class="form-group">
+        <label>Number Of Seats*</label>
+        <input
+          placeholder="Number Of Seats"
+          class="form-control"
+          type="text"
+          formControlName="numberOfSeats"
+        />
+      </div>
+      <div class="form-group">
+        <label>Boat Number*</label>
+        <input
+          placeholder="Boat Number"
+          class="form-control"
+          type="text"
+          formControlName="boatNumber"
+        />
+      </div>
+      <div class="form-group">
+        <label>Charge time*</label>
+        <input
+          placeholder="Charge time"
+          class="form-control"
+          type="text"
+          formControlName="chargeTime"
+        />
+      </div>
+      <br />
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="newForm1?.invalid"
+      >
+        Submit
+      </button>
+    </form>
+    <br />
+  </div>
+</div>

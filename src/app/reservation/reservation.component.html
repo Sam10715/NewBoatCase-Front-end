@@ -1,0 +1,152 @@
+<div class="col">
+  <br />
+  <h4>Check Reservation Availability</h4>
+  <br />
+</div>
+<div class="col">
+  <h5>Select boat type</h5>
+
+  <select id="boatType">
+    <option value="Row">Row</option>
+    <option value="Electrical">Electrical</option>
+  </select>
+  <br />
+  <br />
+  <br />
+  <h5>Number of Person</h5>
+  <input id="NumOfPersons" />
+  <br />
+</div>
+<div class="col">
+  <br />
+  <h5>start time</h5>
+  <input
+    id="DT1"
+    [min]="min"
+    [owlDateTime]="dt1"
+    [owlDateTimeTrigger]="dt1"
+    placeholder="Date Time"
+  />
+  <owl-date-time #dt1></owl-date-time>
+  <br />
+  <br />
+  <button (click)="setStartTime()" class="btn btn-primary">
+    Choose Start Time
+  </button>
+</div>
+
+<br />
+<div class="col" *ngIf="showEndTime">
+  <h5>end time</h5>
+  <input
+    id="DT2"
+    [min]="min1"
+    [max]="max"
+    [owlDateTime]="dt2"
+    [owlDateTimeTrigger]="dt2"
+    placeholder="Date Time"
+  />
+  <owl-date-time [startAt]="startAt" #dt2></owl-date-time>
+  <br />
+  <br />
+  <button (click)="setEndTime()" class="btn btn-primary">
+    Choose End Time
+  </button>
+  <br />
+  <br />
+</div>
+<div class="col">
+  <button *ngIf="showAva" (click)="CheckAva()" class="btn btn-primary">
+    Check Availability
+  </button>
+  <br />
+</div>
+<br />
+<div class="col">
+  <h4>Add Guest infomation</h4>
+
+  <br />
+  <div class="col" *ngIf="showGuestInformaiton">
+    <h2>Add Guest Information</h2>
+    <div class="container">
+      <form [formGroup]="newForm2" (submit)="onFormSubmit()">
+        <div class="form-group">
+          <label>Name*</label>
+          <input
+            placeholder="Name"
+            class="form-control"
+            type="text"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label>ID Type*</label>
+          <input
+            placeholder="ID Type"
+            class="form-control"
+            type="text"
+            formControlName="idType"
+          />
+        </div>
+        <div class="form-group">
+          <label>ID Number*</label>
+          <input
+            placeholder="ID Number"
+            class="form-control"
+            type="text"
+            formControlName="idNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number*</label>
+          <input
+            placeholder="Mobile Number"
+            class="form-control"
+            type="text"
+            formControlName="mobileNumber"
+          />
+        </div>
+        <br />
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="newForm2?.invalid"
+        >
+          Make Reservation
+        </button>
+      </form>
+      <br />
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <select>
+    <option id="startTrip" *ngFor="let trip of trips" value="{{ trip.id }}"
+      >{{ trip.guest.name + ' ' + trip.startDate }}
+    </option>
+  </select>
+  <br />
+  <br />
+  <button (click)="startTrip()" type="submit" class="btn btn-primary">
+    Start Trip
+  </button>
+</div>
+<div class="col">
+  <h2>Stop trip</h2>
+  <label> Select Boat Number</label>
+  <br />
+  <select id="boatNumber">
+    <option *ngFor="let boat of boats" [ngValue]="boat.boatNumber">{{
+      boat.boatNumber
+    }}</option>
+  </select>
+  <br />
+  <br />
+
+  <button (click)="stopTrip()" type="submit" class="btn btn-primary">
+    Stop Trip
+  </button>
+</div>
+<br />

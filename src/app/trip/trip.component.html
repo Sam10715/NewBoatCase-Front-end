@@ -1,0 +1,97 @@
+<br />
+
+<div class="col">
+  <h2>Start Trip</h2>
+  <br />
+
+  <h5>Number of Person</h5>
+  <input id="NumOfPersons" />
+  <br />
+  <br />
+  <h5>Select boat type</h5>
+
+  <select id="boatType">
+    <option value="Row">Row</option>
+    <option value="Electrical">Electrical</option>
+  </select>
+  <br />
+  <br />
+  <button (click)="checkAva()" class="btn btn-primary btn-sm">
+    Check Availability
+  </button>
+</div>
+<hr />
+
+<br />
+<div class="col">
+  <h2>Add Guest Information</h2>
+  <div class="container">
+    <form [formGroup]="newForm2" (submit)="onFormSubmit()">
+      <div class="form-group">
+        <label>Name*</label>
+        <input
+          placeholder="Name"
+          class="form-control"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label>ID Type*</label>
+        <input
+          placeholder="ID Type"
+          class="form-control"
+          type="text"
+          formControlName="idType"
+        />
+      </div>
+      <div class="form-group">
+        <label>ID Number*</label>
+        <input
+          placeholder="ID Number"
+          class="form-control"
+          type="text"
+          formControlName="idNumber"
+        />
+      </div>
+      <div class="form-group">
+        <label>Mobile Number*</label>
+        <input
+          placeholder="Mobile Number"
+          class="form-control"
+          type="text"
+          formControlName="mobileNumber"
+        />
+      </div>
+      <br />
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="newForm2?.invalid"
+      >
+        Start Trip
+      </button>
+    </form>
+    <br />
+  </div>
+</div>
+<br />
+<hr />
+<div class="col">
+  <h2>Stop trip</h2>
+  <label> Select Boat Number</label>
+  <br />
+  <select id="boatNumber">
+    <option *ngFor="let boat of boats" [ngValue]="boat.boatNumber">{{
+      boat.boatNumber
+    }}</option>
+  </select>
+  <br />
+  <br />
+
+  <button (click)="stopTrip()" type="submit" class="btn btn-primary">
+    Stop Trip
+  </button>
+</div>
+<br />
