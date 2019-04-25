@@ -1,4 +1,16 @@
-<br />
+<div class="col">
+  <br />
+  <h2>Numbers you cant choose</h2>
+  <br />
+  <select>
+    <option *ngFor="let boat of allBoats" value="{{ boat.boatNumber }}"
+      >{{ boat.boatNumber }}
+    </option>
+  </select>
+  <br />
+  <br />
+</div>
+<hr />
 <div class="col">
   <h2>Add Row Boat</h2>
   <div class="container">
@@ -6,25 +18,29 @@
       <div class="form-group">
         <label>Number Of Seats*</label>
         <input
+          min="1"
+          oninput="validity.valid||(value='');"
           placeholder="Number Of Seats"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="numberOfSeats"
         />
       </div>
       <div class="form-group">
         <label>Boat Number*</label>
         <input
+          min="1"
+          oninput="validity.valid||(value='');"
           placeholder="Boat Number"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="boatNumber"
         />
         <br />
       </div>
       <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-danger"
         [disabled]="newForm?.invalid"
       >
         Submit
@@ -41,27 +57,33 @@
       <div class="form-group">
         <label>Number Of Seats*</label>
         <input
+          min="1"
+          oninput="validity.valid||(value='');"
           placeholder="Number Of Seats"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="numberOfSeats"
         />
       </div>
       <div class="form-group">
         <label>Boat Number*</label>
         <input
+          min="1"
+          oninput="validity.valid||(value='');"
           placeholder="Boat Number"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="boatNumber"
         />
       </div>
       <div class="form-group">
         <label>Charge time*</label>
         <input
+          min="1"
+          oninput="validity.valid||(value='');"
           placeholder="Charge time"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="chargeTime"
         />
       </div>
@@ -69,7 +91,7 @@
 
       <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-danger"
         [disabled]="newForm1?.invalid"
       >
         Submit
@@ -78,3 +100,78 @@
     <br />
   </div>
 </div>
+<div>
+  <hr />
+
+  <div class="col">
+    <h2>Block Boat</h2>
+    <br />
+    <p>All working boats</p>
+    <select id="unblockedBoat">
+      <option
+        *ngFor="let boat of UnBlockedBoats"
+        value="{{ boat.boatNumber }}"
+        >{{ boat.boatNumber }}</option
+      >
+    </select>
+    <br />
+    <br />
+
+    <button (click)="blockBoat()" class="btn btn-danger">
+      Choose boat number
+    </button>
+  </div>
+  <hr />
+
+  <div class="col">
+    <h2>UnBlock Boat</h2>
+    <br />
+    <p>All Blocked boats</p>
+    <select id="blockedBoat">
+      <option value="{{ boat.boatNumber }}" *ngFor="let boat of BlockedBoats">{{
+        boat.boatNumber
+      }}</option>
+    </select>
+    <br />
+    <br />
+    <button (click)="unBlockBoat()" class="btn btn-danger">
+      Choose boat number
+    </button>
+  </div>
+  <br />
+</div>
+<hr />
+
+<div class="col">
+  <h2>Disable Boat</h2>
+  <br />
+  <select id="DisableBoat">
+    <option value="{{ boat.boatNumber }}" *ngFor="let boat of allWorkingBoats"
+      >{{ boat.boatNumber }}
+    </option>
+  </select>
+  <br />
+  <br />
+  <button (click)="disableboat()" class="btn btn-danger">
+    Choose boat number
+  </button>
+</div>
+<br />
+<hr />
+
+<div class="col">
+  <h2>Delete Boat</h2>
+  <br />
+  <p>All disabled boats</p>
+  <select id="deleteBoat">
+    <option value="{{ boat.boatNumber }}" *ngFor="let boat of disabledBoats"
+      >{{ boat.boatNumber }}
+    </option>
+  </select>
+  <br />
+  <br />
+  <button (click)="deleteBoat()" class="btn btn-danger">
+    Choose boat number
+  </button>
+</div>
+<br />

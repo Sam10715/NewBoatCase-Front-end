@@ -15,7 +15,11 @@ export class TripService {
   private readonly endpoint4 = 'http://localhost:8080/get-avaBoats-reservation';
   private readonly endpoint5 = 'http://localhost:8080/make-reservation';
   private readonly endpoint6 = 'http://localhost:8080/get-Reserved-trips';
-
+  private readonly endpoint7 = 'http://localhost:8080/get-trip-overview';
+  private readonly endpoint8 = 'http://localhost:8080/get-allReserved-trips';
+  private readonly endpoint9 = 'http://localhost:8080/delete-reservation';
+  private readonly endpoint10 = 'http://localhost:8080/get-un-reserved-trips';
+  private readonly endpoint11 = 'http://localhost:8080/delete-ended-trips';
   constructor(private readonly http: HttpClient) {}
 
   public getAvaBoats(
@@ -56,5 +60,20 @@ export class TripService {
   }
   public getReservedTrips(): Observable<Trip[]> {
     return this.http.get<Trip[]>(this.endpoint6);
+  }
+  public getTripOverView(date): Observable<number[]> {
+    return this.http.get<number[]>(this.endpoint7 + '/' + date);
+  }
+  public getAllReservedTrips(): Observable<Trip[]> {
+    return this.http.get<Trip[]>(this.endpoint8);
+  }
+  public deleteReservation(id): Observable<void> {
+    return this.http.get<void>(this.endpoint9 + '/' + id);
+  }
+  public getUnReservedTrips(): Observable<Trip[]> {
+    return this.http.get<Trip[]>(this.endpoint10);
+  }
+  public deleteEndedTrips(): Observable<void> {
+    return this.http.delete<void>(this.endpoint11);
   }
 }

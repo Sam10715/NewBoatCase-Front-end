@@ -1,12 +1,12 @@
 <div class="col">
   <br />
-  <h4>Check Reservation Availability</h4>
+  <h2>Check Reservation Availability</h2>
   <br />
 </div>
 <div class="col">
   <h5>Select boat type</h5>
 
-  <select id="boatType">
+  <select [disabled]="disableType" id="boatType">
     <option value="Row">Row</option>
     <option value="Electrical">Electrical</option>
   </select>
@@ -14,10 +14,10 @@
   <br />
   <br />
   <h5>Number of Person</h5>
-  <input id="NumOfPersons" />
+  <input [disabled]="disableNumber" id="NumOfPersons" />
   <br />
 </div>
-<div class="col">
+<div class="col" *ngIf="showStartTime">
   <br />
   <h5>start time</h5>
   <input
@@ -30,7 +30,7 @@
   <owl-date-time #dt1></owl-date-time>
   <br />
   <br />
-  <button (click)="setStartTime()" class="btn btn-primary">
+  <button (click)="setStartTime()" class="btn btn-danger">
     Choose Start Time
   </button>
 </div>
@@ -49,22 +49,25 @@
   <owl-date-time [startAt]="startAt" #dt2></owl-date-time>
   <br />
   <br />
-  <button (click)="setEndTime()" class="btn btn-primary">
+  <button (click)="setEndTime()" type="submit" class="btn btn-danger">
     Choose End Time
   </button>
   <br />
   <br />
 </div>
 <div class="col">
-  <button *ngIf="showAva" (click)="CheckAva()" class="btn btn-primary">
+  <button
+    *ngIf="showAva"
+    (click)="CheckAva()"
+    type="submit"
+    class="btn btn-danger"
+  >
     Check Availability
   </button>
   <br />
 </div>
 <br />
 <div class="col">
-  <h4>Add Guest infomation</h4>
-
   <br />
   <div class="col" *ngIf="showGuestInformaiton">
     <h2>Add Guest Information</h2>
@@ -93,7 +96,7 @@
           <input
             placeholder="ID Number"
             class="form-control"
-            type="text"
+            type="number"
             formControlName="idNumber"
           />
         </div>
@@ -102,7 +105,7 @@
           <input
             placeholder="Mobile Number"
             class="form-control"
-            type="text"
+            type="number"
             formControlName="mobileNumber"
           />
         </div>
@@ -110,7 +113,7 @@
 
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-danger"
           [disabled]="newForm2?.invalid"
         >
           Make Reservation
@@ -122,16 +125,21 @@
 </div>
 
 <div class="col">
+  <h2>Start trip</h2>
+  <label> Select Reservation </label>
+  <br />
   <select>
     <option id="startTrip" *ngFor="let trip of trips" value="{{ trip.id }}"
-      >{{ trip.guest.name + ' ' + trip.startDate }}
+      >{{ trip.guest.name }} {{ trip.startDate.toString().substring(11, 16) }}
     </option>
   </select>
   <br />
   <br />
-  <button (click)="startTrip()" type="submit" class="btn btn-primary">
+  <button (click)="startTrip()" type="submit" class="btn btn-danger">
     Start Trip
   </button>
+  <br />
+  <br />
 </div>
 <div class="col">
   <h2>Stop trip</h2>
@@ -145,7 +153,7 @@
   <br />
   <br />
 
-  <button (click)="stopTrip()" type="submit" class="btn btn-primary">
+  <button (click)="stopTrip()" type="submit" class="btn btn-danger">
     Stop Trip
   </button>
 </div>

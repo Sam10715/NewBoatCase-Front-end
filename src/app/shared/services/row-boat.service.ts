@@ -11,7 +11,7 @@ export class RowBoatService {
 
   constructor(private readonly http: HttpClient) {}
 
-  public saveRowBoat(rowBoat: RowBoat): Observable<void> {
-    return this.http.post<void>(this.endpoint1, rowBoat);
+  public saveRowBoat(rowBoat: RowBoat): Observable<boolean> {
+    return this.http.post<boolean>(this.endpoint1, rowBoat);
   }
 }

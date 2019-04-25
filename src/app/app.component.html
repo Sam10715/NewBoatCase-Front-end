@@ -1,5 +1,21 @@
-<!-- The content below is only a placeholder and can be replaced.
-
-<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" />
-<owl-date-time #dt1></owl-date-time> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/overview']"
+          >Overview page<span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/reservation']">Reservation page</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/trip']">Trip page</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/addboat']">Boats page</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>

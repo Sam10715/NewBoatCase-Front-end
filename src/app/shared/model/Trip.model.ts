@@ -9,4 +9,6 @@ export class Trip {
   public boatType: string;
   public guest: Guest;
   public boat: Boat;
+  public price: number;
+  public tripStatus: string;
 }

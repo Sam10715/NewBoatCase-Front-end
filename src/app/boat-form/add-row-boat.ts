@@ -19,7 +19,8 @@ export class AddRowBoatForm extends FormGroup {
     return {
       numberOfSeats: this.controls.numberOfSeats.value,
       boatNumber: this.controls.boatNumber.value,
-      BoatMaintenanceStatus: false
+      BoatMaintenanceStatus: false,
+      availability: 'available till the end of the day'
     };
   }
 }

@@ -5,25 +5,25 @@
   <br />
 
   <h5>Number of Person</h5>
-  <input id="NumOfPersons" />
+  <input [disabled]="disableNumber" id="NumOfPersons" />
   <br />
   <br />
   <h5>Select boat type</h5>
 
-  <select id="boatType">
+  <select [disabled]="disableType" id="boatType">
     <option value="Row">Row</option>
     <option value="Electrical">Electrical</option>
   </select>
   <br />
   <br />
-  <button (click)="checkAva()" class="btn btn-primary btn-sm">
+  <button (click)="checkAva()" type="submit" class="btn btn-danger">
     Check Availability
   </button>
 </div>
 <hr />
 
 <br />
-<div class="col">
+<div class="col" *ngIf="showGuestInformation">
   <h2>Add Guest Information</h2>
   <div class="container">
     <form [formGroup]="newForm2" (submit)="onFormSubmit()">
@@ -50,7 +50,7 @@
         <input
           placeholder="ID Number"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="idNumber"
         />
       </div>
@@ -59,7 +59,7 @@
         <input
           placeholder="Mobile Number"
           class="form-control"
-          type="text"
+          type="number"
           formControlName="mobileNumber"
         />
       </div>
@@ -67,7 +67,7 @@
 
       <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-danger"
         [disabled]="newForm2?.invalid"
       >
         Start Trip
@@ -90,7 +90,7 @@
   <br />
   <br />
 
-  <button (click)="stopTrip()" type="submit" class="btn btn-primary">
+  <button (click)="stopTrip()" type="submit" class="btn btn-danger">
     Stop Trip
   </button>
 </div>

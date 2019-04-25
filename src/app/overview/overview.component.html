@@ -1,0 +1,186 @@
+<br />
+<div class="col">
+  <!-- <button
+    (click)="getWeatherInformation()"
+    type="submit"
+    class="btn btn-primary"
+  >
+    get weather information
+  </button> -->
+  <h2>Delete ended trips</h2>
+  <br />
+  <button (click)="deleteEndedTrips()" type="submit" class="btn btn-danger">
+    Delete Ended trips
+  </button>
+  <br />
+  <hr />
+  <h2>Change prices</h2>
+  <br />
+  <p>Rowing boats standarad price per hour is: {{ price?.rowStanderdPrice }}</p>
+  <input [value]="price?.rowStanderdPrice" id="RowS" />
+  <br />
+  <br />
+
+  <button
+    (click)="changeRowStandaredPrice()"
+    type="submit"
+    class="btn btn-danger"
+  >
+    change price
+  </button>
+  <br />
+  <br />
+  <p>Rowing boats actual price per hour is: {{ price?.rowActualPrice }}</p>
+  <!-- <input id="RowA" [value]="price?.rowActualPrice" />
+  <br />
+  <br />
+  <button
+    (click)="changeRowActualPrice()"
+    type="submit"
+    class="btn btn-primary"
+  >
+    change price
+  </button> -->
+  <hr />
+  <p>
+    Electrical boats standarad price per hour is: {{ price?.elcStandardPrice }}
+  </p>
+  <input id="ElcS" [value]="price?.elcStandardPrice" />
+  <br />
+  <br />
+  <button
+    (click)="changeElcStandaredPrice()"
+    type="submit"
+    class="btn btn-danger"
+  >
+    change price
+  </button>
+  <br />
+  <br />
+  <p>Electrical boats actual price per hour is: {{ price?.elcActualPrice }}</p>
+  <!-- <input id="ElcA" [value]="price?.elcActualPrice" />
+  <br />
+  <br />
+  <button
+    (click)="changeElcActualPrice()"
+    type="submit"
+    class="btn btn-primary"
+  >
+    change price
+  </button> -->
+  <hr />
+  <br />
+</div>
+
+<div class="col">
+  <h2>Cancelled trips due to maintenance</h2>
+
+  <label> Choose Reservation</label>
+  <br />
+  <select id="ReservationNumber1">
+    <option *ngFor="let trip of cancelledTrips" value="{{ trip.id }}">
+      {{ trip.id }} {{ trip.guest.name }} {{ trip.guest.mobileNumber }}
+      {{ trip.startDate.toString().substring(0, 10) }}
+      {{ trip.startDate.toString().substring(11, 16) }}
+      {{ trip.endDate.toString().substring(11, 16) }}
+    </option>
+  </select>
+  <br />
+  <br />
+  <button
+    (click)="deleteCancelledReservation()"
+    type="submit"
+    class="btn btn-danger"
+  >
+    Delete Reservation
+  </button>
+  <br />
+</div>
+<hr />
+<div class="col">
+  <h2>Reservation Overview</h2>
+
+  <label> Choose Reservation</label>
+  <br />
+  <select id="ReservationNumber">
+    <option *ngFor="let trip of trips" value="{{ trip.id }}">
+      {{ trip.id }} {{ trip.guest.name }}
+      {{ trip.startDate.toString().substring(0, 10) }}
+      {{ trip.startDate.toString().substring(11, 19) }}
+      {{ trip.endDate.toString().substring(11, 19) }}</option
+    >
+  </select>
+  <br />
+  <br />
+  <button (click)="deleteReservation()" type="submit" class="btn btn-danger">
+    Cancel Reservation
+  </button>
+  <br />
+</div>
+<hr />
+
+<div class="col">
+  <h2>Trip Overview</h2>
+
+  <br />
+  <h5>Choose Time</h5>
+  <input
+    id="DT1"
+    [owlDateTime]="dt1"
+    [owlDateTimeTrigger]="dt1"
+    placeholder="Date Time"
+  />
+  <owl-date-time #dt1></owl-date-time>
+
+  <br />
+  <br />
+  <button (click)="getTripInformation()" class="btn btn-danger">
+    get Trip Information
+  </button>
+  <br />
+  <br />
+  <h6>Number of In Progress trips is: {{ numbers[0] }}</h6>
+  <h6>Number of Ended trips is: {{ numbers[1] }}</h6>
+  <h6>Total income is: {{ numbers[2] }}</h6>
+  <h6>Avreage Trips Duration is: {{ numbers[3] }} hours</h6>
+  <h6>Used Boat number are : {{ boatNumbers }}</h6>
+</div>
+<hr />
+<div class="col">
+  <h2>Boats Overview</h2>
+  <br />
+  <button (click)="getBoatsOverView()" class="btn btn-danger">
+    get Boats Information
+  </button>
+  <br />
+  <br />
+
+  <h6>Total Income is : {{ tripInformaiton[0] }}</h6>
+  <h6>Total Time is : {{ tripInformaiton[1] }} hours</h6>
+  <br />
+
+  <div>
+    <table class="table">
+      <tr>
+        <th scope="row">Number of Boat</th>
+        <th scope="row">Number of in progress trips</th>
+        <th scope="row">Number of Ended trips</th>
+        <th scope="row">Income</th>
+        <th scope="row">Avreage duration</th>
+        <th scope="row">Boat Type</th>
+      </tr>
+
+      <tr *ngFor="let number of boatsInformation">
+        <td>{{ number[0] }}</td>
+        <td>{{ number[1] }}</td>
+        <td>{{ number[2] }}</td>
+        <td>{{ number[3] }}</td>
+        <td>{{ number[4] }}</td>
+        <td>{{ number[5] | boatType }}</td>
+      </tr>
+      <tr>
+        <div></div>
+      </tr>
+    </table>
+  </div>
+</div>

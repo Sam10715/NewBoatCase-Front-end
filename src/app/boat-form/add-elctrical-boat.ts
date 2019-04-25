@@ -25,7 +25,8 @@ export class AddElcBoatForm extends FormGroup {
       numberOfSeats: this.controls.numberOfSeats.value,
       boatNumber: this.controls.boatNumber.value,
       BoatMaintenanceStatus: false,
-      chargeTime: this.controls.chargeTime.value
+      chargeTime: this.controls.chargeTime.value,
+      availability: 'available till the end of the day'
     };
   }
 }

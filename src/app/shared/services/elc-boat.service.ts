@@ -11,7 +11,7 @@ export class ElcBoatService {
 
   constructor(private readonly http: HttpClient) {}
 
-  public saveElcBoat(electricalBoat: ElectricalBoat): Observable<void> {
-    return this.http.post<void>(this.endpoint1, electricalBoat);
+  public saveElcBoat(electricalBoat: ElectricalBoat): Observable<boolean> {
+    return this.http.post<boolean>(this.endpoint1, electricalBoat);
   }
 }
