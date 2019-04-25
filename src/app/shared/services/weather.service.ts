@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ElectricalBoat } from '../model/ElctricalBoat.model';
 import { WeatherCall } from '../model/WeatherCall.model';
 import { Weather } from '../model/Weather.model';
 
@@ -14,9 +13,7 @@ export class WeatherService {
   constructor(private readonly http: HttpClient) {}
 
   public getweatherInformation(): Observable<WeatherCall> {
-    return this.http.get<WeatherCall>(
-      'http://api.openweathermap.org/data/2.5/weather?id=3173203&APPID=83f2f4856d3211be3c68152aa031ec35'
-    );
+    return this.http.get<WeatherCall>('');
   }
 
   public saveWeatherInformation(weather: Weather): Observable<void> {
