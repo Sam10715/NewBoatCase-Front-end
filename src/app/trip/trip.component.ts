@@ -23,6 +23,12 @@ export class TripComponent implements OnInit {
     private readonly boatService: BoatService
   ) {}
 
+  public reset() {
+    this.showGuestInformation = false;
+    this.disableNumber = false;
+    this.disableType = false;
+  }
+
   ngOnInit() {
     this.boatService.getInProgressBoats().subscribe(boats1 => {
       this.boats = boats1;
@@ -36,13 +42,16 @@ export class TripComponent implements OnInit {
     const numOfPersons = (document.getElementById(
       'NumOfPersons'
     ) as HTMLInputElement).value;
+
     const numberOfPersons1 = parseInt(numOfPersons);
+    let numberOfPersons2 = parseFloat(numOfPersons);
     if (
       isNaN(numberOfPersons1) ||
       numberOfPersons1 === 0 ||
-      numberOfPersons1 < 0
+      numberOfPersons1 < 0 ||
+      numberOfPersons2 !== numberOfPersons1
     ) {
-      alert('Please Enter a valid number of persons');
+      alert('Please Enter a valid number of People');
       return;
     }
 
@@ -86,6 +95,7 @@ export class TripComponent implements OnInit {
       'NumOfPersons'
     ) as HTMLInputElement).value;
     const numberOfPersons1 = parseInt(numOfPersons);
+
     if (
       isNaN(numberOfPersons1) ||
       numberOfPersons1 === 0 ||

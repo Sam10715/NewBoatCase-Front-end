@@ -17,7 +17,9 @@ export class AppComponent implements OnInit {
       .pipe(switchMap(() => this.weatherService.getweatherInformation()))
       .subscribe(x => {
         let weather = new Weather();
+
         weather.description = x.weather[0].description;
+        alert(weather.description);
         this.weatherService.saveWeatherInformation(weather).subscribe();
       });
   }

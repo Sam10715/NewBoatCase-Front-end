@@ -13,7 +13,9 @@ export class WeatherService {
   constructor(private readonly http: HttpClient) {}
 
   public getweatherInformation(): Observable<WeatherCall> {
-    return this.http.get<WeatherCall>('');
+    return this.http.get<WeatherCall>(
+      'http://api.openweathermap.org/data/2.5/weather?id=3173203&APPID=83f2f4856d3211be3c68152aa031ec35'
+    );
   }
 
   public saveWeatherInformation(weather: Weather): Observable<void> {

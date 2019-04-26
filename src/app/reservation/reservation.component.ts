@@ -35,7 +35,14 @@ export class ReservationComponent implements OnInit {
     private readonly tripService: TripService,
     private readonly boatService: BoatService
   ) {}
-
+  public reset() {
+    this.showGuestInformaiton = false;
+    this.showStartTime = true;
+    this.disableType = false;
+    this.disableNumber = false;
+    this.showEndTime = false;
+    this.showAva = false;
+  }
   ngOnInit() {
     this.tripService.getReservedTrips().subscribe(trips => {
       this.trips = trips;
@@ -105,13 +112,16 @@ export class ReservationComponent implements OnInit {
     let numOfPersons = (document.getElementById(
       'NumOfPersons'
     ) as HTMLInputElement).value;
+    let numberOfPersons2 = parseFloat(numOfPersons);
+
     let numberOfPersons1 = parseInt(numOfPersons);
     if (
       isNaN(numberOfPersons1) ||
       numberOfPersons1 === 0 ||
-      numberOfPersons1 < 0
+      numberOfPersons1 < 0 ||
+      numberOfPersons1 !== numberOfPersons2
     ) {
-      alert('Please Enter a valid number of persons');
+      alert('Please Enter a valid number of People');
       return;
     }
 
